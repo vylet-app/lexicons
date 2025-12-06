@@ -1,0 +1,65 @@
+{
+  "lexicon": 1,
+  "id": "app.vylet.actor.defs",
+  "defs": {
+    "profileViewBasic": {
+      "type": "object",
+      "required": ["did", "handle"],
+      "properties": {
+        "did": { "type": "string", "format": "did" },
+        "handle": { "type": "string", "format": "handle" },
+        "displayName": {
+          "type": "string",
+          "maxGraphemes": 64,
+          "maxLength": 640
+        },
+        "pronouns": { "type": "string" },
+        "avatar": { "type": "string", "format": "uri" },
+        "viewer": { "type": "ref", "ref": "#viewerState" },
+        "labels": {
+          "type": "array",
+          "items": { "type": "ref", "ref": "com.atproto.label.defs#label" }
+        },
+        "createdAt": { "type": "string", "format": "datetime" }
+      }
+    },
+    "profileView": {
+      "type": "object",
+      "required": ["did", "handle"],
+      "properties": {
+        "did": { "type": "string", "format": "did" },
+        "handle": { "type": "string", "format": "handle" },
+        "displayName": {
+          "type": "string",
+          "maxGraphemes": 64,
+          "maxLength": 640
+        },
+        "pronouns": { "type": "string" },
+        "description": {
+          "type": "string",
+          "maxGraphemes": 600,
+          "maxLength": 600
+        },
+        "avatar": { "type": "string", "format": "uri" },
+        "indexedAt": { "type": "string", "format": "datetime" },
+        "createdAt": { "type": "string", "format": "datetime" },
+        "viewer": { "type": "ref", "ref": "#viewerState" },
+        "labels": {
+          "type": "array",
+          "items": { "type": "ref", "ref": "com.atproto.label.defs#label" }
+        }
+      }
+    },
+    "viewerState": {
+      "type": "object",
+      "description": "Metadata about the requesting account's relationship with the subject account. Only has meaningful content for authed requests.",
+      "properties": {
+        "muted": { "type": "boolean" },
+        "blockedBy": { "type": "boolean" },
+        "blocking": { "type": "string", "format": "at-uri" },
+        "following": { "type": "string", "format": "at-uri" },
+        "followedBy": { "type": "string", "format": "at-uri" }
+      }
+    }
+  }
+}
