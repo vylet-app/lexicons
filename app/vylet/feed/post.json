@@ -12,14 +12,12 @@
         "properties": {
           "media": {
             "type": "union",
-            "refs": [
-              "app.vylet.media.images",
-            ]
+            "refs": ["app.vylet.media.images"]
           },
           "caption": {
             "type": "string",
             "maxGraphemes": 600,
-            "maxLength": 6000
+            "maxLength": 6000,
             "description": "The text that corresponds to the post's media."
           },
           "facets": {

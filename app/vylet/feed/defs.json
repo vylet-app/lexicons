@@ -2,6 +2,13 @@
   "lexicon": 1,
   "id": "app.vylet.feed.defs",
   "defs": {
+    "viewerState": {
+      "type": "object",
+      "description": "Metadata about the requesting account's relationship with the subject content. Only has meaningful content for authed requests.",
+      "properties": {
+        "like": { "type": "string", "format": "at-uri" }
+      }
+    },
     "postView": {
       "type": "object",
       "required": ["uri", "cid", "author", "media", "indexedAt"],
@@ -72,13 +79,6 @@
         "createdAt": { "type": "string", "format": "datetime" },
         "indexedAt": { "type": "string", "format": "datetime" }
       }
-    }
-  },
-  "viewerState": {
-    "type": "object",
-    "description": "Metadata about the requesting account's relationship with the subject content. Only has meaningful content for authed requests.",
-    "properties": {
-      "like": { "type": "string", "format": "at-uri" }
     }
   }
 }
