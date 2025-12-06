@@ -1,0 +1,44 @@
+{
+  "lexicon": 1,
+  "id": "app.vylet.feed.post",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A Vylet post.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["media", "createdAt"],
+        "properties": {
+          "media": {
+            "type": "union",
+            "refs": [
+              "app.vylet.media.images",
+            ]
+          },
+          "caption": {
+            "type": "string",
+            "maxGraphemes": 600,
+            "maxLength": 6000
+            "description": "The text that corresponds to the post's media."
+          },
+          "facets": {
+            "type": "array",
+            "description": "Annotations of the caption (mentions, URLs)",
+            "items": { "type": "ref", "ref": "app.vylet.richtext.facet" }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Client-declared timestamp when this post was originally created."
+          },
+          "labels": {
+            "type": "union",
+            "description": "Self-label values for this post. Effectively content warnings.",
+            "refs": ["com.atproto.label.defs#selfLabels"]
+          }
+        }
+      }
+    }
+  }
+}

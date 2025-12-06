@@ -1,0 +1,43 @@
+{
+  "lexicon": 1,
+  "id": "app.vylet.feed.comment",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A Vylet post.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["text", "root", "createdAt"],
+        "properties": {
+          "text": {
+            "type": "string",
+            "maxGraphemes": 300,
+            "maxLength": 3000
+            "description": "The text that corresponds to the post's media."
+          },
+          "facets": {
+            "type": "array",
+            "description": "Annotations of the comment (mentions, URLs)",
+            "items": { "type": "ref", "ref": "app.vylet.richtext.facet" }
+          },
+          "root": {
+            "type": "ref",
+            "ref": "com.atproto.repo.strongRef",
+            "description": "The Vylet post that this comment is a part of.",
+          },
+          "parent": {
+            "type": "ref",
+            "ref": "com.atproto.repo.strongRef",
+            "description": "The Vylet comment that this comment is a reply to."
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Client-declared timestamp when this post was originally created."
+          }
+        }
+      }
+    }
+  }
+}

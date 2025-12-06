@@ -1,0 +1,84 @@
+{
+  "lexicon": 1,
+  "id": "app.vylet.feed.defs",
+  "defs": {
+    "postView": {
+      "type": "object",
+      "required": ["uri", "cid", "author", "media", "indexedAt"],
+      "properties": {
+        "uri": { "type": "string", "format": "at-uri" },
+        "cid": { "type": "string", "format": "cid" },
+        "author": {
+          "type": "ref",
+          "ref": "app.vylet.actor.defs#profileViewBasic"
+        },
+        "media": {
+          "type": "union",
+          "refs": ["app.vylet.media.images#view"]
+        },
+        "caption": {
+          "type": "string",
+          "maxGraphemes": 600,
+          "maxLength": 6000
+        },
+        "facets": {
+          "type": "array",
+          "items": { "type": "ref", "ref": "app.vylet.richtext.facet" }
+        },
+        "likeCount": { "type": "integer" },
+        "replyCount": { "type": "integer" },
+        "labels": {
+          "type": "array",
+          "items": { "type": "ref", "ref": "com.atproto.label.defs#label" }
+        },
+        "viewer": { "type": "ref", "ref": "#viewerState" },
+        "createdAt": { "type": "string", "format": "datetime" },
+        "indexedAt": { "type": "string", "format": "datetime" }
+      }
+    },
+    "commentView": {
+      "type": "object",
+      "required": ["uri", "cid", "author", "indexedAt"],
+      "properties": {
+        "uri": { "type": "string", "format": "at-uri" },
+        "cid": { "type": "string", "format": "cid" },
+        "author": {
+          "type": "ref",
+          "ref": "app.vylet.actor.defs#profileViewBasic"
+        },
+        "text": {
+          "type": "string",
+          "maxGraphemes": 300,
+          "maxLength": 3000
+        },
+        "facets": {
+          "type": "array",
+          "items": { "type": "ref", "ref": "app.vylet.richtext.facet" }
+        },
+        "root": {
+          "type": "ref",
+          "ref": "com.atproto.repo.strongRef"
+        },
+        "parent": {
+          "type": "ref",
+          "ref": "com.atproto.repo.strongRef"
+        },
+        "replyCount": { "type": "integer" },
+        "labels": {
+          "type": "array",
+          "items": { "type": "ref", "ref": "com.atproto.label.defs#label" }
+        },
+        "viewer": { "type": "ref", "ref": "#viewerState" },
+        "createdAt": { "type": "string", "format": "datetime" },
+        "indexedAt": { "type": "string", "format": "datetime" }
+      }
+    }
+  },
+  "viewerState": {
+    "type": "object",
+    "description": "Metadata about the requesting account's relationship with the subject content. Only has meaningful content for authed requests.",
+    "properties": {
+      "like": { "type": "string", "format": "at-uri" }
+    }
+  }
+}
