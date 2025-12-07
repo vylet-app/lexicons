@@ -4,7 +4,7 @@
   "defs": {
     "profileViewBasic": {
       "type": "object",
-      "required": ["did", "handle", "indexedAt"],
+      "required": ["did", "handle", "createdAt", "indexedAt"],
       "properties": {
         "did": { "type": "string", "format": "did" },
         "handle": { "type": "string", "format": "handle" },
@@ -26,7 +26,7 @@
     },
     "profileView": {
       "type": "object",
-      "required": ["did", "handle", "indexedAt"],
+      "required": ["did", "handle", "createdAt", "indexedAt"],
       "properties": {
         "did": { "type": "string", "format": "did" },
         "handle": { "type": "string", "format": "handle" },
