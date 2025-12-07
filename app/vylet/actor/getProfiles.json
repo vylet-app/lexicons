@@ -1,0 +1,37 @@
+{
+  "lexicon": 1,
+  "id": "app.vylet.actor.getProfiles",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "Get profile views of multiple actors. Does not require auth, but contains relevant metadata with auth.",
+      "parameters": {
+        "type": "params",
+        "required": ["dids"],
+        "properties": {
+          "dids": {
+            "type": "array",
+            "items": { "type": "string", "format": "did" },
+            "maxLength": 25
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["profiles"],
+          "properties": {
+            "profiles": {
+              "type": "array",
+              "items": {
+                "type": "ref",
+                "ref": "app.vylet.actor.defs#profileView"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

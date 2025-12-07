@@ -8,6 +8,7 @@
       "key": "literal:self",
       "record": {
         "type": "object",
+        "required": ["createdAt"],
         "properties": {
           "displayName": {
             "type": "string",
