@@ -11,7 +11,16 @@
     },
     "postView": {
       "type": "object",
-      "required": ["uri", "cid", "author", "media", "createdAt", "indexedAt"],
+      "required": [
+        "uri",
+        "cid",
+        "author",
+        "media",
+        "likeCount",
+        "replyCount",
+        "createdAt",
+        "indexedAt"
+      ],
       "properties": {
         "uri": { "type": "string", "format": "at-uri" },
         "cid": { "type": "string", "format": "cid" },
