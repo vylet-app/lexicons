@@ -1,0 +1,58 @@
+{
+  "lexicon": 1,
+  "id": "app.vylet.feed.getSubjectLikes",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "Get likes of a given subject. Does not require auth.",
+      "parameters": {
+        "type": "params",
+        "required": ["uri"],
+        "properties": {
+          "uri": {
+            "type": "string",
+            "format": "at-uri"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 50
+          },
+          "cursor": {
+            "type": "string"
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["uri", "likes"],
+          "properties": {
+            "uri": {
+              "type": "string",
+              "format": "at-uri"
+            },
+            "likes": {
+              "type": "array",
+              "items": { "type": "ref", "ref": "#like" }
+            },
+            "cursor": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "like": {
+      "type": "object",
+      "required": ["indexedAt", "createdAt", "actor"],
+      "properties": {
+        "indexedAt": { "type": "string", "format": "datetime" },
+        "createdAt": { "type": "string", "format": "datetime" },
+        "actor": { "type": "ref", "ref": "app.vylet.actor.defs#profileView" }
+      }
+    }
+  }
+}
