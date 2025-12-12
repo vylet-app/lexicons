@@ -4,15 +4,7 @@
   "defs": {
     "profileViewBasic": {
       "type": "object",
-      "required": [
-        "did",
-        "handle",
-        "postCount",
-        "followingCount",
-        "followersCount",
-        "createdAt",
-        "indexedAt"
-      ],
+      "required": ["did", "handle", "createdAt", "indexedAt"],
       "properties": {
         "did": { "type": "string", "format": "did" },
         "handle": { "type": "string", "format": "handle" },
@@ -34,7 +26,15 @@
     },
     "profileView": {
       "type": "object",
-      "required": ["did", "handle", "createdAt", "indexedAt"],
+      "required": [
+        "did",
+        "handle",
+        "postCount",
+        "followingCount",
+        "followersCount",
+        "createdAt",
+        "indexedAt"
+      ],
       "properties": {
         "did": { "type": "string", "format": "did" },
         "handle": { "type": "string", "format": "handle" },
