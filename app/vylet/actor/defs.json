@@ -4,7 +4,15 @@
   "defs": {
     "profileViewBasic": {
       "type": "object",
-      "required": ["did", "handle", "createdAt", "indexedAt"],
+      "required": [
+        "did",
+        "handle",
+        "postCount",
+        "followingCount",
+        "followersCount",
+        "createdAt",
+        "indexedAt"
+      ],
       "properties": {
         "did": { "type": "string", "format": "did" },
         "handle": { "type": "string", "format": "handle" },
@@ -46,6 +54,15 @@
         "labels": {
           "type": "array",
           "items": { "type": "ref", "ref": "com.atproto.label.defs#label" }
+        },
+        "postCount": {
+          "type": "integer"
+        },
+        "followingCount": {
+          "type": "integer"
+        },
+        "followersCount": {
+          "type": "integer"
         },
         "createdAt": { "type": "string", "format": "datetime" },
         "indexedAt": { "type": "string", "format": "datetime" }
